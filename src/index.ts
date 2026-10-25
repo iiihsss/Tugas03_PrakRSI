@@ -31,18 +31,15 @@ app.get('/health', async (_req, res) => {
   res.status(200).json({ status: 'success', message: 'Server dan database terhubung' });
 });
 
-app.use('/api/v1/auth', authRouter);
-
-app.use('/api/v1/stalls', stallRouter);
-
-app.use('/api/v1/admin', adminRouter);
-
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/menu-items', menuItemRouter);
-app.use('/api/v1/reviews', reviewRouter);
-app.use('/api/v1/likes', likeRouter);
-app.use('/api/v1/flags', flagRouter);
-app.use('/api/v1/audit-logs', auditRouter);
+app.use('/auth', authRouter);
+app.use('/stalls', stallRouter);
+app.use('/admin', adminRouter);
+app.use('/users', userRouter);
+app.use('/menu-items', menuItemRouter);
+app.use('/reviews', reviewRouter);
+app.use('/likes', likeRouter);
+app.use('/flags', flagRouter);
+app.use('/audit-logs', auditRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

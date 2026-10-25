@@ -16,70 +16,85 @@
     "http"
   ],
   "paths": {
+    "/docs/swagger.json": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/v1/stalls/": {
+    "/auth/register": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/me": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "search",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "category",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "type": "integer"
-          }
-        ],
         "responses": {
-          "200": {
-            "description": "Daftar warung"
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/profile": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/stalls/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/StallInput"
-            }
-          }
-        ],
         "responses": {
-          "201": {
-            "description": "Warung dibuat"
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/api/v1/stalls/{id}": {
+    "/stalls/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -87,15 +102,12 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Detail warung"
-          },
-          "404": {
-            "description": "Tidak ditemukan"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -106,23 +118,12 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/StallInput"
-            }
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Warung ter-update"
-          },
-          "404": {
-            "description": "Tidak ditemukan"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -133,20 +134,17 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Warung terhapus"
-          },
-          "404": {
-            "description": "Tidak ditemukan"
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/api/v1/stalls/{id}/menus": {
+    "/stalls/{id}/menus": {
       "get": {
         "description": "",
         "parameters": [
@@ -154,20 +152,45 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Daftar menu"
-          },
-          "404": {
-            "description": "Tidak ditemukan"
+          "default": {
+            "description": ""
           }
         }
       }
     },
-    "/api/v1/users/": {
+    "/stalls/{id}/reviews": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/admin/reports": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/": {
       "get": {
         "description": "",
         "responses": {
@@ -195,7 +218,7 @@
         }
       }
     },
-    "/api/v1/menu-items/": {
+    "/menu-items/": {
       "get": {
         "description": "",
         "responses": {
@@ -223,7 +246,7 @@
         }
       }
     },
-    "/api/v1/menu-items/{id}": {
+    "/menu-items/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -290,7 +313,7 @@
         }
       }
     },
-    "/api/v1/reviews/": {
+    "/reviews/": {
       "get": {
         "description": "",
         "responses": {
@@ -318,7 +341,7 @@
         }
       }
     },
-    "/api/v1/reviews/{id}": {
+    "/reviews/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -339,7 +362,7 @@
         }
       }
     },
-    "/api/v1/likes/": {
+    "/likes/": {
       "post": {
         "description": "",
         "parameters": [
@@ -380,7 +403,7 @@
         }
       }
     },
-    "/api/v1/flags/": {
+    "/flags/": {
       "get": {
         "description": "",
         "responses": {
@@ -390,7 +413,7 @@
         }
       }
     },
-    "/api/v1/flags/{id}/status": {
+    "/flags/{id}/status": {
       "put": {
         "description": "",
         "parameters": [
@@ -419,7 +442,7 @@
         }
       }
     },
-    "/api/v1/audit-logs/": {
+    "/audit-logs/": {
       "get": {
         "description": "",
         "responses": {

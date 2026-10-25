@@ -35,7 +35,7 @@ export class AuthService {
       name: input.name,
       email: input.email,
       passwordHash,
-      role: 'customer',
+      role: input.role || 'customer',
     });
     if (!row) throw new AppError(500, 'User gagal dibuat');
 

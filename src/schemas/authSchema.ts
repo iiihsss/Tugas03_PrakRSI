@@ -21,8 +21,14 @@ export const registerSchema = z
       .max(100, 'name maksimal 100 karakter'),
     email: emailSchema,
     password: passwordSchema,
+    role: z
+      .enum(['admin', 'owner', 'customer'], {
+        invalid_type_error: 'role harus bernilai admin, owner, atau customer',
+      })
+      .optional()
+      .default('customer'),
   })
-  .strict({ message: 'body hanya boleh berisi name, email, dan password' });
+  .strict({ message: 'body hanya boleh berisi name, email, password, dan role' });
 
 export const loginSchema = z
   .object({
